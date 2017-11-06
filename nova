@@ -1,15 +1,24 @@
 #!/usr/bin/env python3
-from speak import speak
-from recognize import recognize
-
+from lib import speak, recognize
+from lib import Switchboard
 import sys
 
 def main():
     speak('Twas brillig, and the slithy toves did gyre and gimble in the wabe')
 
-    #while True:
-        #speak(text)
-        #print(recognize())
+    def f(*args):
+        print('running F')
+
+    def g(*args):
+        print('running G')
+
+    functions = {
+            'a' : f,
+            'b' : g
+            }
+
+    sb = Switchboard(functions)
+    sb.loop()
     return 0
 
 if __name__ == '__main__':
