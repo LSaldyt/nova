@@ -1,6 +1,13 @@
 #!/usr/bin/env python3
  
 import speech_recognition as sr
+from gtts import gTTS
+import os
+
+def speak(audioString):
+    tts = gTTS(text=audioString, lang='en')
+    tts.save("audio.mp3")
+    os.system("mpg321 audio.mp3")
  
 def recognize():
     r = sr.Recognizer()
@@ -21,5 +28,44 @@ def recognize():
     except sr.RequestError as e:
         print("Could not request results from Google Speech Recognition service; {0}".format(e))
 
+text = '''
+Twas brillig, and the slithy toves
+      Did gyre and gimble in the wabe:
+All mimsy were the borogoves,
+      And the mome raths outgrabe.
+
+“Beware the Jabberwock, my son!
+      The jaws that bite, the claws that catch!
+Beware the Jubjub bird, and shun
+      The frumious Bandersnatch!”
+
+He took his vorpal sword in hand;
+      Long time the manxome foe he sought—
+So rested he by the Tumtum tree
+      And stood awhile in thought.
+
+And, as in uffish thought he stood,
+      The Jabberwock, with eyes of flame,
+Came whiffling through the tulgey wood,
+      And burbled as it came!
+
+One, two! One, two! And through and through
+      The vorpal blade went snicker-snack!
+He left it dead, and with its head
+      He went galumphing back.
+
+“And hast thou slain the Jabberwock?
+      Come to my arms, my beamish boy!
+O frabjous day! Callooh! Callay!”
+      He chortled in his joy.
+
+’Twas brillig, and the slithy toves
+      Did gyre and gimble in the wabe:
+All mimsy were the borogoves,
+      And the mome raths outgrabe.
+'''
+#speak('Twas brillig, and the slithy toves did gyre and gimble in the wabe')
+
 while True:
+    #speak(text)
     print(recognize())
