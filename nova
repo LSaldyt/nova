@@ -1,20 +1,19 @@
 #!/usr/bin/env python3
 from lib import speak, recognize
 from lib import Switchboard
-import sys
+import sys, subprocess
 
 def main():
-    speak('Twas brillig, and the slithy toves did gyre and gimble in the wabe')
 
-    def f(*args):
-        print('running F')
+    def echo(*args):
+        speak(' '.join(args))
 
-    def g(*args):
-        print('running G')
+    def scour(*args):
+        subprocess.call(['scour'] + list(args))
 
     functions = {
-            'a' : f,
-            'b' : g
+            'echo'  : echo,
+            'scour' : scour
             }
 
     sb = Switchboard(functions)
