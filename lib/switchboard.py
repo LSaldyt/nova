@@ -5,6 +5,7 @@ class Switchboard:
         self.functions = functionDictionary
 
     def run(self, subcommand, *args):
+        print(subcommand, args)
         self.functions[subcommand](*args)
 
     def loop(self):
